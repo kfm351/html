@@ -1,0 +1,40 @@
+﻿@using BlazorApp1.Data
+
+@if(IsBtnGroupVisible)
+{
+    <div class="d-flex gap-1">
+        <button type="button" class="btn btn-primary">Add Student</button>
+        <button type="button" class="btn btn-warning">Change Student</button>
+        <button type="button" class="btn btn-danger">Del Student</button>
+    </div>
+}
+
+<table class="table" style="@TableStyle">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Id</th>
+      <th scope="col">Fullname</th>
+      <th scope="col">Group</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var s in StudentsList)
+    {
+        <tr>
+            <th scope="row">@(StudentsList.IndexOf(s) + 1)</th>
+            <td>@s.Id</td>
+            <td>@s.Name</td>
+            <td>@s.Group</td>
+        </tr>
+    }
+</tbody>
+</table>
+
+@code {
+    [Parameter] public List<Student> StudentsList { get; set; }
+
+    [Parameter] public string TableStyle { get; set; } = "";
+
+    [Parameter] public bool IsBtnGroupVisible { get; set; } = false;
+}

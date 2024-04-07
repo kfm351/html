@@ -1,0 +1,20 @@
+﻿@page "/student-page"
+
+@using BlazorApp1.Data
+@inject db_connection db_connection
+
+<h3>StudentPage</h3>
+<input @bind-value="_styles" type="text" placeholder="Write down style for table"/>
+<button @onclick="RefreshComponent">Show edit btns</button>
+<StudentTableComponent TableStyle="@_styles" IsBtnGroupVisible="@_showEditBtns" StudentsList="@db_connection.students"></StudentTableComponent>
+
+@code {
+    private string _styles = "";
+    private bool _showEditBtns = false;
+
+    private void RefreshComponent()
+    {
+        _showEditBtns = !_showEditBtns;
+        //StateHasChanged();
+    }
+}

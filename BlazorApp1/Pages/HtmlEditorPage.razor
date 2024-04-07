@@ -1,0 +1,21 @@
+﻿@page "/html-editor"
+
+<div class="d-flex flex-row gap-2 w-100">
+    <div class="editor-block">
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" @bind="Code"></textarea>
+        </div>
+        <div class="d-flex gap-1 justify-content-between">
+            <button type="button" class="btn btn-primary">Ok</button>
+            <button type="button" class="btn btn-outline-primary">Clear</button>
+        </div>
+    </div>
+    <div class="html-block">
+        <iframe srcdoc="@Code"></iframe>
+    </div>
+</div>
+
+@code {
+    private string Code { get; set; }
+}
